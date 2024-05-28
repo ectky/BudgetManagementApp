@@ -1,5 +1,9 @@
-﻿using BudgetManagement.Data.Entities;
+﻿using AutoMapper;
+using BudgetManagement.Data.Entities;
 using BudgetManagement.Shared.Dtos;
+using BudgetManagement.Shared.Repos.Contracts;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,13 +20,13 @@ namespace BudgetManagement.Data.Repos
         protected readonly DbSet<T> _dbSet;
         protected readonly IMapper mapper;
         private bool disposedValue;
-
-        protected BaseRepository(BudgetManagmentDbContext context, IMapper mapper)
+        //TO DO
+        /*protected BaseRepository(BudgetManagmentDbContext context, IMapper mapper)
         {
             _context = context;
             _dbSet = _context.Set<T>();
             this.mapper = mapper;
-        }
+        }*/
         public virtual TModel MapToModel(T entity)
         {
             return mapper.Map<TModel>(entity);
