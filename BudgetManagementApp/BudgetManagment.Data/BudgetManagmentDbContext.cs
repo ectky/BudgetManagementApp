@@ -1,12 +1,13 @@
 ﻿using BudgetManagement.Data.Entities;
 using BudgetManagement.Shared.Enums;
 using Microsoft.EntityFrameworkCore;
+using PetShelter.Shared.Security;
 using System;
 using System.Linq;
 
 namespace PetShelter.Data
 {
-    public class PetShelterDbContext : DbContext
+    public class BudgetManagementDbContext : DbContext
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
@@ -15,12 +16,12 @@ namespace PetShelter.Data
         public DbSet<BudgetCategory> BudgetCategories { get; set; }
         public DbSet<BudgetAmount> BudgetAmounts { get; set; }
         public DbSet<Budget> Budget { get; set; }
-      
-        public BudgetManagmentDbContext(DbContextOptions<BudgetManagmentDbContext> options) : base(options)
+
+        public BudgetManagementDbContext(DbContextOptions<BudgetManagementDbContext> options) : base(options)
         {
 
         }
-        public BudgetManagmentDbContext()
+        public BudgetManagementDbContext()
         {
 
         }
@@ -36,26 +37,28 @@ namespace PetShelter.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>()
-                .HasMany(b => b.Username)
-                .WithOne(p => p.RoleId)
-                .HasForeignKey(p => p.RoleId);
+                .HasMany(u => u.Budgets)
+                .WithOne(p => p.User)
+                .HasForeignKey(p => p.UserId);
 
-            modelBuilder.Entity<User>()
-                .HasMany(u => u.AdoptedPets)
-                .WithOne(p => p.Adopter)
-                .HasForeignKey(p => p.AdopterId)
+            modelBuilder.Entity<Role>()
+                .HasMany(u => u.Users)
+                .WithOne(p => p.Role)
+                .HasForeignKey(p => p.RoleId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<User>()
-                .HasMany(u => u.GivenPets)
-                .WithOne(u => u.Giver)
-                .HasForeignKey(p => p.GiverId)
+            modelBuilder.Entity<Budget>()
+                .HasMany(u => u.BudgetAmounts)
+                .WithOne(u => u.Budget)
+                .HasForeignKey(p => p.BudgetId)
                 .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<Shelter>()
-                .HasOne(a => a.Location)
-                .WithOne(a => a.Shelter)
-                .HasForeignKey<Location>(c => c.ShelterId);
+              modelBuilder.Entity<Budget>()
+                .HasMany(u => u.FinanceGoals)
+                .WithOne(u => u.Budget)
+                .HasForeignKey(p => p.BudgetId)
+                .OnDelete(DeleteBehavior.Restrict);
+           
+                
 
             foreach (var role in Enum.GetValues(typeof(UserRole)).Cast<UserRole>())
             {
