@@ -11,7 +11,7 @@ namespace BudgetManagementApp.ViewModels
 
         public int BudgetId { get; set; }
 
-        public  Budget Budget { get; set; }
+       
 
         public BudgetType Type { get; set; }
     }

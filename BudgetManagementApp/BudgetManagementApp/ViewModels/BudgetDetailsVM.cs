@@ -8,13 +8,13 @@ namespace BudgetManagementApp.ViewModels
 
         public int BudgetCategoryId { get; set; }
 
-        public  BudgetCategory BudgetCategories { get; set; }
+        
 
         public  List<BudgetAmountDetailsVM> BudgetAmounts { get; set; } 
         public  List<FinanceGoalDetailsVM> FinanceGoals { get; set; } 
 
         public int UserId { get; set; }
 
-        public  User User { get; set; }
+        
     }
 }

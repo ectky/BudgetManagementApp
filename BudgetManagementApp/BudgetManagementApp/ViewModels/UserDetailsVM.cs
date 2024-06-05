@@ -9,7 +9,7 @@ namespace BudgetManagementApp.ViewModels
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int RoleId { get; set; }
-        public  Role Role { get; set; }
+        
         public  List<BudgetDetailsVM> Budgets { get; set; }
         public  List<FinanceGoalDetailsVM> FinanceGoals { get; set; }
     }

@@ -8,6 +8,6 @@ namespace BudgetManagementApp.ViewModels
 
         public string Description { get; set; }
 
-        public  List<BudgetDetailsVM> Budgets { get; set; }
+        
     }
 }
