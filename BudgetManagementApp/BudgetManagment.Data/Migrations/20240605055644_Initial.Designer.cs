@@ -12,7 +12,7 @@ using PetShelter.Data;
 namespace BudgetManagement.Data.Migrations
 {
     [DbContext(typeof(BudgetManagementDbContext))]
-    [Migration("20240605052630_Initial")]
+    [Migration("20240605055644_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -57,7 +57,7 @@ namespace BudgetManagement.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Budget");
+                    b.ToTable("Budgets");
                 });
 
             modelBuilder.Entity("BudgetManagement.Data.Entities.BudgetAmount", b =>
@@ -220,7 +220,7 @@ namespace BudgetManagement.Data.Migrations
                             Id = 1,
                             FirstName = "Admin",
                             LastName = "User",
-                            Password = "ybE7JkgNUaUkZcFE7eYX9oZMMFP8xyBSIHgv0WDY9z2FMW/ZdFRM1mT8atCfKvX1",
+                            Password = "s7Ud9Z/XrYmK+kJ7KwBDd0Cje2lyemXWxvQbqIXuKnKDgOI/8rVrkLOfGj9uS566",
                             RoleId = 2,
                             Username = "admin"
                         });

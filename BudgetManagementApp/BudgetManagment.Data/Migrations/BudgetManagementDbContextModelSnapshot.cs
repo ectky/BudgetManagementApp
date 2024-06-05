@@ -54,7 +54,7 @@ namespace BudgetManagement.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Budget");
+                    b.ToTable("Budgets");
                 });
 
             modelBuilder.Entity("BudgetManagement.Data.Entities.BudgetAmount", b =>
@@ -217,7 +217,7 @@ namespace BudgetManagement.Data.Migrations
                             Id = 1,
                             FirstName = "Admin",
                             LastName = "User",
-                            Password = "ybE7JkgNUaUkZcFE7eYX9oZMMFP8xyBSIHgv0WDY9z2FMW/ZdFRM1mT8atCfKvX1",
+                            Password = "s7Ud9Z/XrYmK+kJ7KwBDd0Cje2lyemXWxvQbqIXuKnKDgOI/8rVrkLOfGj9uS566",
                             RoleId = 2,
                             Username = "admin"
                         });

@@ -15,7 +15,7 @@ namespace PetShelter.Data
         public DbSet<FinanceGoal> FinanceGoals { get; set; }
         public DbSet<BudgetCategory> BudgetCategories { get; set; }
         public DbSet<BudgetAmount> BudgetAmounts { get; set; }
-        public DbSet<Budget> Budget { get; set; }
+        public DbSet<Budget> Budgets { get; set; }
 
         public BudgetManagementDbContext(DbContextOptions<BudgetManagementDbContext> options) : base(options)
         {
