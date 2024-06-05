@@ -76,7 +76,7 @@ namespace BudgetManagement.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Budget",
+                name: "Budgets",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
