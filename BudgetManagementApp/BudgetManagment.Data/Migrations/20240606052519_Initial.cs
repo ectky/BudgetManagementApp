@@ -169,7 +169,7 @@ namespace BudgetManagement.Data.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "FirstName", "LastName", "Password", "RoleId", "Username" },
-                values: new object[] { 1, "Admin", "User", "s7Ud9Z/XrYmK+kJ7KwBDd0Cje2lyemXWxvQbqIXuKnKDgOI/8rVrkLOfGj9uS566", 2, "admin" });
+                values: new object[] { 1, "Admin", "User", "WqDvFLVlgTWmfMgcDnD/Vanc5KQHfdb7dYvuXGAtPCnD8DPt9WewMYZ1DWpgNq8x", 2, "admin" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_BudgetAmounts_BudgetId",

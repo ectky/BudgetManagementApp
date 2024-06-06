@@ -5,14 +5,14 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using PetShelter.Data;
+using BudgetManagement.Data;
 
 #nullable disable
 
 namespace BudgetManagement.Data.Migrations
 {
     [DbContext(typeof(BudgetManagementDbContext))]
-    [Migration("20240605055644_Initial")]
+    [Migration("20240606052519_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -220,7 +220,7 @@ namespace BudgetManagement.Data.Migrations
                             Id = 1,
                             FirstName = "Admin",
                             LastName = "User",
-                            Password = "s7Ud9Z/XrYmK+kJ7KwBDd0Cje2lyemXWxvQbqIXuKnKDgOI/8rVrkLOfGj9uS566",
+                            Password = "WqDvFLVlgTWmfMgcDnD/Vanc5KQHfdb7dYvuXGAtPCnD8DPt9WewMYZ1DWpgNq8x",
                             RoleId = 2,
                             Username = "admin"
                         });
