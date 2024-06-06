@@ -25,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BudgetManagement.Shared\BudgetManagement.Shared.csproj" />
     <ProjectReference Include="..\BudgetManagment.Data\BudgetManagement.Data.csproj" />
   </ItemGroup>
 
