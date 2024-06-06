@@ -1,5 +1,5 @@
-﻿namespace BudgetManagementApp.ViewModels
-    using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+namespace BudgetManagementApp.ViewModels
 {
     public class ReportEditVM : BaseVM
     {

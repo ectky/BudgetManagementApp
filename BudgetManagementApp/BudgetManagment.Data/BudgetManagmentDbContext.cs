@@ -1,11 +1,11 @@
 ﻿using BudgetManagement.Data.Entities;
 using BudgetManagement.Shared.Enums;
 using Microsoft.EntityFrameworkCore;
-using PetShelter.Shared.Security;
+using BudgetManagement.Shared.Security;
 using System;
 using System.Linq;
 
-namespace PetShelter.Data
+namespace BudgetManagement.Data
 {
     public class BudgetManagementDbContext : DbContext
     {
