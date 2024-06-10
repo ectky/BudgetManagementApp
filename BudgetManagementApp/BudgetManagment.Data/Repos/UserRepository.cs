@@ -3,6 +3,8 @@ using BudgetManagement.Data.Entities;
 using BudgetManagement.Shared.Attributes;
 using BudgetManagement.Shared.Dtos;
 using BudgetManagement.Shared.Repos.Contracts;
+using BudgetManagement.Shared.Security;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,14 +21,15 @@ namespace BudgetManagement.Data.Repos
         public UserRepository(BudgetManagementDbContext context, IMapper mapper) : base(context, mapper)
         {
         }
-        public Task<bool> CanUserLoginAsync(string username, string password)
+        public async Task<bool> CanUserLoginAsync(string username, string password)
         {
-            throw new NotImplementedException();
+            var hashedPassword = (await this.GetByUsernameAsync(username))?.Password;
+            return PasswordHasher.VerifyPassword(password, hashedPassword);
         }
 
-        public Task<UserDto> GetByUsernameAsync(string username)
+        public async Task<UserDto> GetByUsernameAsync(string username)
         {
-            throw new NotImplementedException();
+            return MapToModel(await _dbSet.FirstOrDefaultAsync(l => l.Username == username));
         }
     }
 }
