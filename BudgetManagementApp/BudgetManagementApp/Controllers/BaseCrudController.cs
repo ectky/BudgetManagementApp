@@ -33,9 +33,9 @@ namespace BudgetManagementApp.Controllers
             return Task.FromResult<string?>(null);
         }
 
-        protected virtual Task<TEditVM> PrePopulateVMAsync()
+        protected virtual Task<TEditVM> PrePopulateVMAsync(TEditVM editVM)
         {
-            return Task.FromResult(new TEditVM());
+            return Task.FromResult(editVM);
         }
 
         [HttpGet]
@@ -73,7 +73,7 @@ namespace BudgetManagementApp.Controllers
         [HttpGet]
         public virtual async Task<IActionResult> Create()
         {
-            var editVM = await PrePopulateVMAsync();
+            var editVM = await PrePopulateVMAsync(new TEditVM());
 
             return View(editVM);
         }
@@ -111,6 +111,7 @@ namespace BudgetManagementApp.Controllers
             }
 
             var mappedModel = _mapper.Map<TEditVM>(model);
+            mappedModel = await PrePopulateVMAsync(mappedModel);
 
             return View(mappedModel);
         }

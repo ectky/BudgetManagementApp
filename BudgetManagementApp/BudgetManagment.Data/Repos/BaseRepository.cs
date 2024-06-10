@@ -20,13 +20,12 @@ namespace BudgetManagement.Data.Repos
         protected readonly DbSet<T> _dbSet;
         protected readonly IMapper mapper;
         private bool disposedValue;
-        //TO DO
-        /*protected BaseRepository(BudgetManagmentDbContext context, IMapper mapper)
+        protected BaseRepository(BudgetManagementDbContext context, IMapper mapper)
         {
             _context = context;
             _dbSet = _context.Set<T>();
             this.mapper = mapper;
-        }*/
+        }
         public virtual TModel MapToModel(T entity)
         {
             return mapper.Map<TModel>(entity);
