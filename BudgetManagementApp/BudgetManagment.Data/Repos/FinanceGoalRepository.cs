@@ -15,9 +15,8 @@ namespace BudgetManagement.Data.Repos
     // TO DO:
     public class FinanceGoalRepository : BaseRepository<FinanceGoal, FinanceGoalDto>, IFinanceGoalRepository
     {
-        // TO DO:
-        /*public FinanceGoalRepository(PetShelterDbContext context, IMapper mapper) : base(context, mapper)
+        public FinanceGoalRepository(BudgetManagementDbContext context, IMapper mapper) : base(context, mapper)
         {
-        }*/
+        }
     }
 }

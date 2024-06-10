@@ -15,5 +15,13 @@ namespace BudgetManagement.Services
         public UsersService(IUserRepository repository) : base(repository)
         {
         }
+        public Task<bool> CanUserLoginAsync(string username, string password)
+        {
+            return _repository.CanUserLoginAsync(username, password);
+        }
+        public Task GetByUsernameAsync(string username)
+        {
+            return _repository.GetByUsernameAsync(username);
+        }
     }
 }

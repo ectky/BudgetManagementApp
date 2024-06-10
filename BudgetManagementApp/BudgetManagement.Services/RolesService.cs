@@ -15,5 +15,9 @@ namespace BudgetManagement.Services
         public RolesService(IRoleRepository repository) : base(repository)
         {
         }
+        public Task<RoleDto> GetByNameIfExistsAsync(string v)
+        {
+            return _repository.GetByNameIfExistsAsync(v);
+        }
     }
 }

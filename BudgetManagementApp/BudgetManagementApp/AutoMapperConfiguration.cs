@@ -4,6 +4,7 @@ using BudgetManagement.Shared.Dtos;
 using BudgetManagementApp.ViewModels;
 using Microsoft.CodeAnalysis.Elfie.Serialization;
 
+
 namespace BudgetManagementApp
 {
     internal class AutoMapperConfiguration : Profile
@@ -37,6 +38,11 @@ namespace BudgetManagementApp
             CreateMap<User, UserDto>().ReverseMap();
             CreateMap<UserDto, UserEditVM>().ReverseMap();
             CreateMap<UserDto, UserDetailsVM>().ReverseMap();
+
+            CreateMap<UserDto,RegisterVM>().ReverseMap();
+
+            CreateMap<LoginVM,LoginDto>().ReverseMap();
+            
         }
     }
 }

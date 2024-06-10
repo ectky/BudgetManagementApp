@@ -16,9 +16,17 @@ namespace BudgetManagement.Data.Repos
     // TO DO:
     public class UserRepository : BaseRepository<User, UserDto>, IUserRepository
     {
-        // TO DO:
-        /*public UserRepository(PetShelterDbContext context, IMapper mapper) : base(context, mapper)
+        public UserRepository(BudgetManagementDbContext context, IMapper mapper) : base(context, mapper)
         {
-        }*/
+        }
+        public Task<bool> CanUserLoginAsync(string username, string password)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<UserDto> GetByUsernameAsync(string username)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
