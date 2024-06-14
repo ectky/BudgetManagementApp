@@ -1,0 +1,67 @@
+﻿@model BudgetManagementApp.ViewModels.UserDetailsVM
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+
+            @Html.DisplayNameFor(model => model.Username)
+
+        </dt>
+
+        <dd>
+
+            @Html.DisplayNameFor(model => model.Username)
+
+        </dd>
+
+        <dt>
+
+            @Html.DisplayNameFor(model => model.Password)
+
+        </dt>
+
+        <dd>
+
+            @Html.DisplayNameFor(model => model.Password)
+
+        </dd>
+
+        <dt>
+
+            @Html.DisplayNameFor(model => model.FirstName)
+
+        </dt>
+
+        <dd>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RoleId)
+        </dt>
+        <dd>
+            @Html.DisplayNameFor(model => model.RoleId)
+        </dd>
+       
+    </dl>
+
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "List")
+</p>

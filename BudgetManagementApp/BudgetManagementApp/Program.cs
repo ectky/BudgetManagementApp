@@ -5,6 +5,7 @@ using BudgetManagement.Shared.Extensions;
 using BudgetManagement.Data.Repos;
 using BudgetManagement.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using EntityFrameworkCore.UseRowNumberForPaging;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,7 +15,9 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<BudgetManagementDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration["ConnectionStrings:DefaultConnection"]);
+
+    options.UseSqlServer(builder.Configuration["ConnectionStrings:DefaultConnection"],
+        r => r.UseRowNumberForPaging());
 });
 
 builder.Services.AutoBind(typeof(BudgetsService).Assembly);

@@ -28,6 +28,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+
                         @if (Context.User?.Identity?.IsAuthenticated == true)
                         {
                             <li class="nav-item">
@@ -41,6 +42,55 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Register">Register</a>
+                            </li>
+                        }
+                         @if (Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.User.ToString() ||
+                        Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.Admin.ToString())
+                        {
+                            <li class=" nav-item">
+                                <a class=" nav-link text-dark" asp-area="" asp-controller="Budget" asp-action="List">Budgets</a>
+                            </li>
+                        }
+                        @if (Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.User.ToString() ||
+                        Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.Admin.ToString())
+                        {
+                            <li class=" nav-item">
+                                <a class=" nav-link text-dark" asp-area="" asp-controller="BudgetAmount" asp-action="List">BudgetAmounts</a>
+                            </li>
+                        }
+                          @if (Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.User.ToString() ||
+                        Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.Admin.ToString())
+                        {
+                            <li class=" nav-item">
+                                <a class=" nav-link text-dark" asp-area="" asp-controller="BudgetCategory" asp-action="List">BudgetCategories</a>
+                            </li>
+                        }
+                        @if (Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.User.ToString() ||
+                        Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.Admin.ToString())
+                        {
+                            <li class=" nav-item">
+                                <a class=" nav-link text-dark" asp-area="" asp-controller="FinanceGoal" asp-action="List">FinanceGoals</a>
+                            </li>
+                        }
+                        @if (Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.User.ToString() ||
+                        Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.Admin.ToString())
+                        {
+                            <li class=" nav-item">
+                                <a class=" nav-link text-dark" asp-area="" asp-controller="Report" asp-action="List">Reports</a>
+                            </li>
+                        }
+                        @if (Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.User.ToString() ||
+                        Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.Admin.ToString())
+                        {
+                            <li class=" nav-item">
+                                <a class=" nav-link text-dark" asp-area="" asp-controller="User" asp-action="List">Users</a>
+                            </li>
+                        }
+                        @if (Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.User.ToString() ||
+                        Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.Admin.ToString())
+                        {
+                            <li class=" nav-item">
+                                <a class=" nav-link text-dark" asp-area="" asp-controller="Role" asp-action="List">Roles</a>
                             </li>
                         }
                         
