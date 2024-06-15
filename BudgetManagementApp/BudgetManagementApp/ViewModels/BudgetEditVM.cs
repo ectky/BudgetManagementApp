@@ -1,4 +1,5 @@
 ﻿using BudgetManagement.Data.Entities;
+using BudgetManagement.Shared.Services.Contracts;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -9,6 +10,7 @@ namespace BudgetManagementApp.ViewModels
     {
         [Required]
         public string Name { get; set; }
+
         [Required]
         [DisplayName("Budget Category")]
         public int BudgetCategoryId { get; set; }

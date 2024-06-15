@@ -1,32 +1,38 @@
 ﻿@model IEnumerable<BudgetManagementApp.ViewModels.ReportDetailsVM>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Reports";
 }
 
-<h2>Index</h2>
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+<p class="h2 text-light">Reports</p>
+@Html.ActionLink("Create New", "Create", null, htmlAttributes: new { @class = "btn btn-outline-primary mb-3 mt-2" })
+<table class="table table-dark table-striped">
 
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
         </th>
         <th>Actions</th>
     </tr>
     @foreach (var item in Model)
     {
         <tr>
-            <th>
-                @Html.DisplayFor(model => item.Name)
-            </th>
-
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", null, new { id = item.Id },
+                         htmlAttributes: new { @class = "btn btn-outline-warning btn-sm" })
+                @Html.ActionLink("Details", "Details", null, new { id = item.Id },
+                         htmlAttributes: new { @class = "btn btn-outline-success btn-sm" })
+                @Html.ActionLink("Delete", "Delete", null, new { id = item.Id },
+                         htmlAttributes: new { @class = "btn btn-outline-danger btn-sm" })
             </td>
         </tr>
     }

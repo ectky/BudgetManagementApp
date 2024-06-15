@@ -7,15 +7,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - BudgetManagementApp</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/vaporwave.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/BudgetManagementApp.styles.css" asp-append-version="true" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BudgetManagementApp</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">💸</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -28,22 +28,6 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-
-                        @if (Context.User?.Identity?.IsAuthenticated == true)
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Logout">Logout</a>
-                            </li>
-                        }
-                        else
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Login">Login</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Register">Register</a>
-                            </li>
-                        }
                          @if (Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.User.ToString() ||
                         Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.Admin.ToString())
                         {
@@ -55,21 +39,21 @@
                         Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.Admin.ToString())
                         {
                             <li class=" nav-item">
-                                <a class=" nav-link text-dark" asp-area="" asp-controller="BudgetAmount" asp-action="List">BudgetAmounts</a>
+                                <a class=" nav-link text-dark" asp-area="" asp-controller="BudgetAmount" asp-action="List">Budget Amounts</a>
                             </li>
                         }
                           @if (Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.User.ToString() ||
                         Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.Admin.ToString())
                         {
                             <li class=" nav-item">
-                                <a class=" nav-link text-dark" asp-area="" asp-controller="BudgetCategory" asp-action="List">BudgetCategories</a>
+                                <a class=" nav-link text-dark" asp-area="" asp-controller="BudgetCategory" asp-action="List">Budget Categories</a>
                             </li>
                         }
                         @if (Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.User.ToString() ||
                         Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.Admin.ToString())
                         {
                             <li class=" nav-item">
-                                <a class=" nav-link text-dark" asp-area="" asp-controller="FinanceGoal" asp-action="List">FinanceGoals</a>
+                                <a class=" nav-link text-dark" asp-area="" asp-controller="FinanceGoal" asp-action="List">Finance Goals</a>
                             </li>
                         }
                         @if (Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.User.ToString() ||
@@ -93,7 +77,21 @@
                                 <a class=" nav-link text-dark" asp-area="" asp-controller="Role" asp-action="List">Roles</a>
                             </li>
                         }
-                        
+                        @if (Context.User?.Identity?.IsAuthenticated == true)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Logout">Logout</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Login">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Register">Register</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
