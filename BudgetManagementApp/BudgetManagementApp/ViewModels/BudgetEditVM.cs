@@ -21,5 +21,10 @@ namespace BudgetManagementApp.ViewModels
         public int UserId { get; set; }
         public IEnumerable<SelectListItem> UsersList { get; set; }
 
+        [Required]
+        [DisplayName("Budget Amount")]
+        public int BudgetAmountId { get; set; }
+        public IEnumerable<SelectListItem> BudgetAmountsList { get; set; }
+
     }
 }

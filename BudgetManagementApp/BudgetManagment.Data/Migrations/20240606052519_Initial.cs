@@ -13,7 +13,7 @@ namespace BudgetManagement.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "BudgetCategories",
+                name: "BudgetCategory",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -92,7 +92,7 @@ namespace BudgetManagement.Data.Migrations
                     table.ForeignKey(
                         name: "FK_Budgets_BudgetCategories_BudgetCategoryId",
                         column: x => x.BudgetCategoryId,
-                        principalTable: "BudgetCategories",
+                        principalTable: "BudgetCategory",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -220,7 +220,7 @@ namespace BudgetManagement.Data.Migrations
                 name: "Budgets");
 
             migrationBuilder.DropTable(
-                name: "BudgetCategories");
+                name: "BudgetCategory");
 
             migrationBuilder.DropTable(
                 name: "Reports");

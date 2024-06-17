@@ -18,9 +18,6 @@
         <th>
             @Html.DisplayNameFor(model => model.BudgetCategory)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BudgetAmounts)
-        </th>
         <th>Actions</th>
     </tr>
     @foreach (var item in Model)
@@ -30,19 +27,19 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.User)
+                @Html.DisplayFor(modelItem => item.User.Username)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.BudgetCategory)
+                @Html.DisplayFor(modelItem => item.BudgetCategory.Name)
             </td>
+            <!--<td class="d-flex flex-wrap justify-content-lg-evenly justify-content-sm-wrap justify-content-md-evenly">-->
             <td>
-                @Html.DisplayFor(modelItem => item.BudgetAmounts.Count)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", null, new { id = item.Id },
-                         htmlAttributes: new { @class = "btn btn-outline-warning btn-sm" })
                 @Html.ActionLink("Details", "Details", null, new { id = item.Id },
-                         htmlAttributes: new { @class = "btn btn-outline-success btn-sm" })
+                         htmlAttributes: new { @class = "btn btn-outline-success btn-sm me-3" })
+
+                @Html.ActionLink("Edit", "Edit", null, new { id = item.Id },
+                         htmlAttributes: new { @class = "btn btn-outline-warning btn-sm me-3" })
+                
                 @Html.ActionLink("Delete", "Delete", null, new { id = item.Id },
                          htmlAttributes: new { @class = "btn btn-outline-danger btn-sm" })
             </td>

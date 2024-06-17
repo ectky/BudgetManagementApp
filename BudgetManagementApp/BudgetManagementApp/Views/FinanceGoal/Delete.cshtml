@@ -4,30 +4,47 @@
     ViewBag.Title = "Delete";
 }
 
+<p class="h4">Finance Goals</p>
 <h2>Delete</h2>
 <h3>Are you sure you want to delete this?</h3>
 <div>
-        <h4>Product</h4>
         <hr />
         <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.User)
-            </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Budget)
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.User)
+        <dd>
+            @Html.DisplayFor(model => model.Budget.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.Username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
         </dl>
 
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
-            <div class="form-actions no-color">
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-outline-primary mb-3 mt-2" />
+        </div>
 
-                <input type="submit" value="Delete" class="btn btn-default" />|
-
-                <input type="submit" value="Delete" class="btn btn-default" /> |
-                @Html.ActionLink("Back to List", "List")
-            </div>
-        }
+        <div class="form-actions no-color">
+            @Html.ActionLink("Back to List", "List")
+        </div>
+    }
     </div>

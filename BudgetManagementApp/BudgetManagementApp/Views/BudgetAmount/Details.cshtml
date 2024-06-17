@@ -4,9 +4,10 @@
     ViewBag.Title = "Details";
 }
 
+<p class="h3">Budget Amounts</p>
+
 <h2>Details</h2>
 <div>
-    <h4>Products</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -16,9 +17,40 @@
         <dd>
             @Html.DisplayFor(model => model.Name)
         </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Budget)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Budget.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+<div class="my-3">
+    @Html.ActionLink("Edit", "Edit", null, new { id = Model.Id },
+            htmlAttributes: new { @class = "btn btn-outline-warning btn-sm me-3" })
+
+    @Html.ActionLink("Delete", "Delete", null, new { id = Model.Id },
+            htmlAttributes: new { @class = "btn btn-outline-danger btn-sm me-3" })
+</div>
+
+<div>
     @Html.ActionLink("Back to List", "List")
-</p>
+</div>

@@ -15,12 +15,17 @@ namespace BudgetManagementApp.ViewModels
         public string FirstName { get; set; }
         [Required]
         public string LastName { get; set; }
+
         [Required]
         [DisplayName("Role")]
         public int RoleId { get; set; }
 
         public IEnumerable<SelectListItem> RolesList { get; set; }
-       
-        
+
+        [Required]
+        [DisplayName("Budget")]
+        public int BudgetId { get; set; }
+
+        public IEnumerable<SelectListItem> BudgetsList { get; set; }
     }
 }

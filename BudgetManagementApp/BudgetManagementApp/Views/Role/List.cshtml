@@ -23,12 +23,14 @@
             </th>
 
             <td>
-                @Html.ActionLink("Edit", "Edit", null, new { id = item.Id },
-                         htmlAttributes: new { @class = "btn btn-outline-warning btn-sm" })
                 @Html.ActionLink("Details", "Details", null, new { id = item.Id },
-                         htmlAttributes: new { @class = "btn btn-outline-success btn-sm" })
+                         htmlAttributes: new { @class = "btn btn-outline-success btn-sm me-3" })
+
+                @Html.ActionLink("Edit", "Edit", null, new { id = item.Id },
+                         htmlAttributes: new { @class = "btn btn-outline-warning btn-sm me-3" })
+                
                 @Html.ActionLink("Delete", "Delete", null, new { id = item.Id },
-                         htmlAttributes: new { @class = "btn btn-outline-danger btn-sm" })
+                         htmlAttributes: new { @class = "btn btn-outline-danger btn-sm me-3" })
             </td>
         </tr>
     }

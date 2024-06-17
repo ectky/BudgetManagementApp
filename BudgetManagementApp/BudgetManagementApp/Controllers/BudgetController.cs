@@ -16,11 +16,14 @@ namespace BudgetManagementApp.Controllers
 
         protected readonly IBudgetCategoryService _budgetCategoryService;
         protected readonly IUserService _userService;
+        private readonly IBudgetAmountService _budgetAmountService;
 
-        public BudgetController(IBudgetService service, IMapper mapper, IBudgetCategoryService budgetCategoryService, IUserService userService) : base(service, mapper)
+        public BudgetController(IBudgetService service, IMapper mapper, IBudgetCategoryService budgetCategoryService, IUserService userService, IBudgetAmountService budgetAmountService) : base(service, mapper)
         {
             this._budgetCategoryService = budgetCategoryService;
             this._userService = userService;
+            this._budgetAmountService = budgetAmountService;
+
         }
 
         protected override async Task<BudgetEditVM> PrePopulateVMAsync(BudgetEditVM editVM)
@@ -28,8 +31,13 @@ namespace BudgetManagementApp.Controllers
 
             editVM.BudgetCategoriesList = (await _budgetCategoryService.GetAllAsync())
                 .Select(x => new SelectListItem($"{x.Name}", x.Id.ToString()));
+
             editVM.UsersList = (await _userService.GetAllAsync())
                 .Select(x => new SelectListItem($"{x.Username}", x.Id.ToString()));
+
+            editVM.BudgetAmountsList = (await _budgetAmountService.GetAllAsync())
+                .Select(x => new SelectListItem($"{x.Amount}", x.Id.ToString()));
+
             return editVM;
         }
     }

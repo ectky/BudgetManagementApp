@@ -102,7 +102,7 @@ namespace BudgetManagement.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("BudgetCategories");
+                    b.ToTable("BudgetCategory");
                 });
 
             modelBuilder.Entity("BudgetManagement.Data.Entities.FinanceGoal", b =>
@@ -228,7 +228,7 @@ namespace BudgetManagement.Data.Migrations
 
             modelBuilder.Entity("BudgetManagement.Data.Entities.Budget", b =>
                 {
-                    b.HasOne("BudgetManagement.Data.Entities.BudgetCategory", "BudgetCategories")
+                    b.HasOne("BudgetManagement.Data.Entities.BudgetCategory", "BudgetCategory")
                         .WithMany("Budgets")
                         .HasForeignKey("BudgetCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -244,7 +244,7 @@ namespace BudgetManagement.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("BudgetCategories");
+                    b.Navigation("BudgetCategory");
 
                     b.Navigation("User");
                 });
