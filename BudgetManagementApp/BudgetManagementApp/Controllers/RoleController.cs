@@ -12,7 +12,7 @@ namespace BudgetManagementApp.Controllers
     [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme, Roles = "Admin, Employee, User")]
     public class RoleController : BaseCrudController<RoleDto, IRoleRepository, IRoleService, RoleEditVM, RoleDetailsVM>
     {
-        public RoleController(IRoleService service, IMapper mapper, IBudgetService budgetService, IRoleService roleService) : base(service, mapper)
+        public RoleController(IRoleService service, IMapper mapper) : base(service, mapper)
         {
             
         }
