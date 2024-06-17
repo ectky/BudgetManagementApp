@@ -52,13 +52,21 @@ namespace BudgetManagement.Data
                 .WithOne(u => u.Budget)
                 .HasForeignKey(p => p.BudgetId)
                 .OnDelete(DeleteBehavior.Restrict);
+
               modelBuilder.Entity<Budget>()
                 .HasMany(u => u.FinanceGoals)
                 .WithOne(u => u.Budget)
                 .HasForeignKey(p => p.BudgetId)
                 .OnDelete(DeleteBehavior.Restrict);
-           
-                
+
+              modelBuilder.Entity<Budget>()
+                .HasOne(u => u.BudgetCategory)
+                .WithMany(u => u.Budgets)
+                .HasForeignKey(p => p.BudgetCategoryId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+
+
 
             foreach (var role in Enum.GetValues(typeof(UserRole)).Cast<UserRole>())
             {

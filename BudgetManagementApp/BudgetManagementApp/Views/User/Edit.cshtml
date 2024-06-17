@@ -1,0 +1,94 @@
+﻿@model BudgetManagementApp.ViewModels.UserEditVM
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<p class="h3">Users</p>
+<h2>Edit</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+
+
+        <div class="form-group">
+
+            @Html.LabelFor(model => model.BudgetId, new { @class = "control-label col-md-2" })
+
+            <div class="col-md-3 mb-3">
+
+                @Html.DropDownListFor(model => model.BudgetId, Model.BudgetsList, "Choose a budget...", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.BudgetId)
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <div class="form-group">
+                <div class="form-floating mb-3 col-md-3">
+                    @Html.EditorFor(model => model.Username,
+                             new { htmlAttributes = new { @class = "form-control my-3", @type = "username", @id = "floatingusername", @placeholder = "jondoe123" } })
+                    <label for="floatingusername">Username</label>
+                    @Html.ValidationMessageFor(model => model.Username)
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <div class="form-floating mb-3 col-md-3">
+                @Html.EditorFor(model => model.Password,
+                         new { htmlAttributes = new { @class = "form-control", @type = "text", @id = "floatingpassword", @placeholder = "qwerty" } })
+                <label for="floatingpassword">Password</label>
+                @Html.ValidationMessageFor(model => model.Password)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="form-floating mb-3 col-md-3">
+                @Html.EditorFor(model => model.FirstName,
+                         new { htmlAttributes = new { @class = "form-control", @type = "firstname", @id = "floatingfirstname", @placeholder = "Jon" } })
+                <label for="floatingfirstname">First Name</label>
+                @Html.ValidationMessageFor(model => model.FirstName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="form-floating mb-2 col-md-3">
+                @Html.EditorFor(model => model.LastName,
+                         new { htmlAttributes = new { @class = "form-control", @type = "lastname", @id = "floatinglastname", @placeholder = "Doe" } })
+                <label for="floatinglastname">Last Name</label>
+                @Html.ValidationMessageFor(model => model.LastName)
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            @Html.LabelFor(model => model.RoleId, new { @class = "control-label col-md-2" })
+
+            <div class="col-md-3 mb-3">
+
+                @Html.DropDownListFor(model => model.RoleId, Model.RolesList, "Choose a role...", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.RoleId)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+
+            <div class="col-md-offset-2 col-md-10">
+
+                <input type="submit" value="Edit" class="btn btn-outline-primary mb-3 mt-2" />
+            </div>
+        </div>
+    </div>
+}
+<div>
+    @Html.ActionLink("back to List", "List")
+</div>

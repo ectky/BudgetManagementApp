@@ -1,0 +1,53 @@
+﻿@model BudgetManagementApp.ViewModels.BudgetDetailsVM
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<p class="h4">Budget</p>
+
+<h2>Delete</h2>
+<h3>Are you sure you want to delete this?</h3>
+
+<div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.User)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.User.FirstName) @Html.DisplayFor(model => model.User.LastName) |
+                @Html.DisplayFor(model => model.User.Username)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.BudgetCategory)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BudgetCategory.Name)
+            </dd>
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-outline-primary mb-3 mt-2" />
+            </div>
+
+        <div>
+            @Html.ActionLink("Back to List", "List")
+        </div>
+        }
+    </div>

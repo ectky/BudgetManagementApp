@@ -5,6 +5,7 @@ using BudgetManagement.Shared.Services.Contracts;
 using BudgetManagementApp.ViewModels;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BudgetManagementApp.Controllers
 {
@@ -13,6 +14,8 @@ namespace BudgetManagementApp.Controllers
     {
         public RoleController(IRoleService service, IMapper mapper) : base(service, mapper)
         {
+            
         }
+
     }
 }

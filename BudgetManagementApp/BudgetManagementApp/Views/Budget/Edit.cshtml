@@ -1,0 +1,61 @@
+﻿@model BudgetManagementApp.ViewModels.BudgetEditVM
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<p class="h3">Budget</p>
+<h2>Edit</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            <div class="form-floating mb-3 col-md-3">
+                @Html.EditorFor(model => model.Name,
+                         new { htmlAttributes = new { @class = "form-control", @type = "name", @id = "floatingname", @placeholder = "Johnny" } })
+                <label for="floatingname">Name</label>
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            @Html.LabelFor(model => model.BudgetCategoryId, new { @class = "control-label col-md-2" })
+
+            <div class="col-md-3 mb-3">
+                @Html.DropDownListFor(model => model.BudgetCategoryId, Model.BudgetCategoriesList, "Choose a category",
+                         new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.BudgetCategoryId)
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            @Html.LabelFor(model => model.UserId, new { @class = "control-label col-md-2" })
+
+            <div class="col-md-3 mb-3">
+                @Html.DropDownListFor(model => model.UserId, Model.UsersList, "Choose a user",
+                         new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UserId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Edit" class="btn btn-outline-primary mb-3 mt-2" />
+            </div>
+        </div>
+
+        <div>
+            @Html.ActionLink("Back to List", "List")
+        </div>
+
+    </div>
+    
+}

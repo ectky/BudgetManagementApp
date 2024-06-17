@@ -12,7 +12,7 @@ namespace BudgetManagement.Data.Entities
 
         public int BudgetCategoryId { get; set; }
 
-        public virtual BudgetCategory BudgetCategories { get; set; }
+        public virtual BudgetCategory BudgetCategory { get; set; }
 
         public virtual List<BudgetAmount> BudgetAmounts { get; set; }
         public virtual List<FinanceGoal> FinanceGoals { get; set; }

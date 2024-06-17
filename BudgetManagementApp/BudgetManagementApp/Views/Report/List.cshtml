@@ -1,0 +1,41 @@
+﻿@model IEnumerable<BudgetManagementApp.ViewModels.ReportDetailsVM>
+
+@{
+    ViewBag.Title = "Reports";
+}
+
+<p class="h2 text-light">Reports</p>
+@Html.ActionLink("Create New", "Create", null, htmlAttributes: new { @class = "btn btn-outline-primary mb-3 mt-2" })
+<table class="table table-dark table-striped">
+
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", null, new { id = item.Id },
+                         htmlAttributes: new { @class = "btn btn-outline-success btn-sm me-3" })
+
+                @Html.ActionLink("Edit", "Edit", null, new { id = item.Id },
+                         htmlAttributes: new { @class = "btn btn-outline-warning btn-sm me-3" })
+                
+                @Html.ActionLink("Delete", "Delete", null, new { id = item.Id },
+                         htmlAttributes: new { @class = "btn btn-outline-danger btn-sm me-3" })
+            </td>
+        </tr>
+    }
+</table>

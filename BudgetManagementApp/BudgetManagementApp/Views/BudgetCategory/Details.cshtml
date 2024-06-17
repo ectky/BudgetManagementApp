@@ -1,0 +1,40 @@
+﻿@model BudgetManagementApp.ViewModels.BudgetCategoryDetailsVM
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<p class="h3">Budget Categories</p>
+<h2>Details</h2>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Budgets)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Budgets)
+        </dd>
+    </dl>
+</div>
+
+<div class="my-3">
+    @Html.ActionLink("Edit", "Edit", null, new { id = Model.Id },
+            htmlAttributes: new { @class = "btn btn-outline-warning btn-sm me-3" })
+
+    @Html.ActionLink("Delete", "Delete", null, new { id = Model.Id },
+            htmlAttributes: new { @class = "btn btn-outline-danger btn-sm me-3" })
+</div>
+
+<div>
+    @Html.ActionLink("Back to List", "List")
+</div>
