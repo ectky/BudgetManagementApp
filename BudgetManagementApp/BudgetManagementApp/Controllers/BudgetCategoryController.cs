@@ -18,13 +18,5 @@ namespace BudgetManagementApp.Controllers
         {
             _budgetService = budgetService;
         }
-
-        protected override async Task<BudgetCategoryEditVM> PrePopulateVMAsync(BudgetCategoryEditVM editVM)
-        {
-            editVM.BudgetsList = (await _budgetService.GetAllAsync())
-                .Select(x => new SelectListItem($"{x.Name}", x.Id.ToString()));
-
-            return editVM;
-        }
     }
 }

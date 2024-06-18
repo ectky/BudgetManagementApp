@@ -24,7 +24,7 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Budgets)
+                @Html.DisplayFor(modelItem => item.Budgets.Count)
             </td>
             <td>
                 @Html.ActionLink("Details", "Details", null, new { id = item.Id },

@@ -22,17 +22,6 @@
                 </div>
             </div>
 
-            <div class="form-group">
-
-                @Html.LabelFor(model => model.BudgetId, new { @class = "control-label col-md-2" })
-
-                <div class="col-md-3 mb-3">
-                    @Html.DropDownListFor(model => model.BudgetId, Model.BudgetsList, "Choose a budget",
-                             new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.BudgetId)
-                </div>
-            </div>
-
 
             <div class="form-group">
 
