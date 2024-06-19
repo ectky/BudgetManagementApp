@@ -26,7 +26,6 @@ namespace BudgetManagement.Services
 
             return financeGoal;
         }
-
         private decimal CalculateCompletionPercentage(FinanceGoalDto financeGoal)
         {
             var incomes = financeGoal.Budget.BudgetAmounts.Where(x => x.Type == BudgetType.Income).Sum(x => x.Amount);
