@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace BudgetManagement.Data.Repos
 {
     public abstract class BaseRepository<T, TModel> : IBaseRepository<TModel>, IDisposable
-            where T : BaseEntity
+            where T : class , IBaseEntity
             where TModel : BaseModel
     {
         protected readonly DbContext _context;
