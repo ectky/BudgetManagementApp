@@ -11,15 +11,11 @@ using System.Threading.Tasks;
 namespace BudgetManagement.Services
 {
     [AutoBind]
-    public class BudgetsService : BaseCrudService<BudgetDto, IBudgetRepository>,IBudgetService
+    public class BudgetReportService : BaseCrudService<BudgetReportDto, IBudgetReportRepository>, IBudgetReportService
     {
-        public BudgetsService(IBudgetRepository repository) : base(repository)
+        public BudgetReportService(IBudgetReportRepository repository) : base(repository)
         {
-        }
-
-        public Task AddBudgetToReport(int budgetId, int reportId)
-        {
-            return _repository.AddBudgetToReport(budgetId, reportId);
+            
         }
     }
 }

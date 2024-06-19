@@ -2,15 +2,13 @@
 using BudgetManagement.Shared.Repos.Contracts;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace BudgetManagement.Shared.Services.Contracts
 {
-    public interface IBudgetService : IBaseCrudService<BudgetDto, IBudgetRepository>
+    public interface IBudgetReportService : IBaseCrudService<BudgetReportDto, IBudgetReportRepository>
     {
-        Task AddBudgetToReport(int budgetId, int reportId);
     }
 }

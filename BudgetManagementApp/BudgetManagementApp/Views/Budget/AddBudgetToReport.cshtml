@@ -1,0 +1,45 @@
+﻿@page
+@model BudgetManagementApp.ViewModels.AddBudgetToReportVM
+@{
+    ViewBag.Title = "ABTR";
+}
+
+<p class="h3">Budget</p>
+
+<p class="h4">Add budget to report</p>
+
+<hr />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true)
+
+        @Html.HiddenFor(model => model.BudgetId)
+
+        <div class="form-group">
+
+            @Html.LabelFor(model => model.ReportId, new { @class = "control-label col-md-2" })
+
+            <div class="col-md-3 mb-3">
+                @Html.DropDownListFor(model => model.ReportId, Model.ReportList, "Choose a report...",
+                         new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ReportId)
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Add" class="btn btn-outline-primary mb-3 mt-2" />
+                </div>
+            </div>
+
+            <div>
+                @Html.ActionLink("Back to List", "List")
+            </div>
+        </div>
+    </div>
+}

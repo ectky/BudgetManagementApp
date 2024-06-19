@@ -11,11 +11,11 @@ using System.Threading.Tasks;
 
 namespace BudgetManagement.Data.Repos
 {
+
     [AutoBind]
-    // TO DO:
-    public class BudgetRepository : BaseRepository<Budget, BudgetDto>, IBudgetRepository
+    public class BudgetReportRepository : BaseRepository<BudgetReport, BudgetReportDto>, IBudgetReportRepository
     {
-        public BudgetRepository(BudgetManagementDbContext context, IMapper mapper) : base(context, mapper)
+        public BudgetReportRepository(BudgetManagementDbContext context, IMapper mapper) : base(context, mapper)
         {
         }
     }
