@@ -17,5 +17,7 @@ namespace BudgetManagement.Shared.Dtos
         public int UserId { get; set; }
 
         public  UserDto User { get; set; }
+
+        public string CompletionPercentage { get; set; }
     }
 }

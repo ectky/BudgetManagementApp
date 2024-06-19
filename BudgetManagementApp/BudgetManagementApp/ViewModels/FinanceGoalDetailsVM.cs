@@ -12,7 +12,10 @@ namespace BudgetManagementApp.ViewModels
 
         public  UserDetailsVM User { get; set; }
         public int UserId { get; set; }
-
         
+        public string CompletionPercentage { get; set; }
+
+
+
     }
 }
