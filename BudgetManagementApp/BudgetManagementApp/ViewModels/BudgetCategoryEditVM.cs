@@ -9,10 +9,6 @@ namespace BudgetManagementApp.ViewModels
         [Required]
         public string Name { get; set; }
 
-        [Required]
-        [DisplayName("Budget")]
-        public int BudgetId { get; set; }
-        public IEnumerable<SelectListItem> BudgetsList { get; set; }
 
     }
 }

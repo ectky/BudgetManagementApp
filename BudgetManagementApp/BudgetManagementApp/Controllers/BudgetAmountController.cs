@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BudgetManagement.Shared.Dtos;
+using BudgetManagement.Shared.Enums;
 using BudgetManagement.Shared.Repos.Contracts;
 using BudgetManagement.Shared.Services.Contracts;
 using BudgetManagementApp.ViewModels;
@@ -22,6 +23,9 @@ namespace BudgetManagementApp.Controllers
         {
             editVM.BudgetsList = (await _budgetService.GetAllAsync())
                 .Select(x => new SelectListItem($"{x.Name}", x.Id.ToString()));
+
+            editVM.TypeList = Enum.GetValues(typeof(BudgetType)).Cast<BudgetType>()
+                .Select(x => new SelectListItem($"{x.ToString()}", ((int)x).ToString()));
 
             return editVM;
         }

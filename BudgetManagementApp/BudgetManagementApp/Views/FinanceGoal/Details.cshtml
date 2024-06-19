@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Details";
+    var completionPercentage = Model.CompletionPercentage.Substring(0, Model.CompletionPercentage.Length - 1);
 }
 
 <p class="h3">Finance Goals</p>
@@ -25,12 +26,26 @@
             @Html.DisplayFor(model => model.User.Username)
         </dd>
 
+
         <dt>
             @Html.DisplayNameFor(model => model.Amount)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Amount)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CompletionPercentage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompletionPercentage)
+        </dd>
+
+        <dd>
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="@completionPercentage" aria-valuemin="0" aria-valuemax="100" style="width: @completionPercentage%;"></div>
+            </div>
         </dd>
     </dl>
 </div>

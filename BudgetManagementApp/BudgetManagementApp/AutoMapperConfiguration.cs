@@ -23,6 +23,10 @@ namespace BudgetManagementApp
             CreateMap<BudgetCategoryDto, BudgetCategoryEditVM>().ReverseMap();
             CreateMap<BudgetCategoryDto, BudgetCategoryDetailsVM>().ReverseMap();
 
+            CreateMap<BudgetReport, BudgetReportDto>().ReverseMap();
+            CreateMap<BudgetReportDto, BudgetReportEditVM>().ReverseMap();
+            CreateMap<BudgetReportDto,BudgetAmountDetailsVM>().ReverseMap();
+
             CreateMap<FinanceGoal, FinanceGoalDto>().ReverseMap();
             CreateMap<FinanceGoalDto, FinanceGoalEditVM>().ReverseMap();
             CreateMap<FinanceGoalDto, FinanceGoalDetailsVM>().ReverseMap();

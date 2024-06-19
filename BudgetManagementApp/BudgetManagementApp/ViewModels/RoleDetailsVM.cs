@@ -6,5 +6,6 @@ namespace BudgetManagementApp.ViewModels
     {
         public string Name { get; set; }
         public  List<UserDetailsVM> Users { get; set; }
+         
     }
 }

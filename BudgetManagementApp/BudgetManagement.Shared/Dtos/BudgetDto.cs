@@ -14,7 +14,7 @@ namespace BudgetManagement.Shared.Dtos
 
         public  BudgetCategoryDto BudgetCategory { get; set; }
 
-        public  List<BudgetAmountDto> BudgetAmount { get; set; }
+        public  List<BudgetAmountDto> BudgetAmounts { get; set; }
 
         public int UserId { get; set; }
 

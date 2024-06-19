@@ -16,5 +16,15 @@ namespace BudgetManagement.Services
         public BudgetsService(IBudgetRepository repository) : base(repository)
         {
         }
+
+        public Task AddBudgetToReport(int budgetId, int reportId)
+        {
+            return _repository.AddBudgetToReport(budgetId, reportId);
+        }
+
+        public Task Transfer(int budgetAmountId, int budgetId)
+        {
+            return _repository.Transfer(budgetAmountId, budgetId);
+        }
     }
 }

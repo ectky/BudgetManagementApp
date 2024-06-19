@@ -6,54 +6,62 @@ using BudgetManagement.Data.Repos;
 using BudgetManagement.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using EntityFrameworkCore.UseRowNumberForPaging;
-
-
-var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-builder.Services.AddControllersWithViews();
-
-builder.Services.AddDbContext<BudgetManagementDbContext>(options =>
+using Microsoft.IdentityModel.Tokens;
+public class Program
 {
+    private static void Main(string[] args)
+    {
+        var builder = WebApplication.CreateBuilder(args);
 
-    options.UseSqlServer(builder.Configuration["ConnectionStrings:DefaultConnection"],
-        r => r.UseRowNumberForPaging());
-});
+        // Add services to the container.
+        builder.Services.AddControllersWithViews();
 
-builder.Services.AutoBind(typeof(BudgetsService).Assembly);
-builder.Services.AutoBind(typeof(BudgetRepository).Assembly);
-builder.Services.AddAutoMapper(m => m.AddProfile(new AutoMapperConfiguration()));
+        builder.Services.AddDbContext<BudgetManagementDbContext>(options =>
+        {
 
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie();
+            options.UseSqlServer(builder.Configuration["ConnectionStrings:DefaultConnection"],
+                r => r.UseRowNumberForPaging());
+        });
 
-var app = builder.Build();
+        builder.Services.AutoBind(typeof(BudgetsService).Assembly);
+        builder.Services.AutoBind(typeof(BudgetRepository).Assembly);
+        builder.Services.AddAutoMapper(m => m.AddProfile(new AutoMapperConfiguration()));
 
-using (var scope = app.Services.CreateScope())
-{
-    var context = scope.ServiceProvider.GetRequiredService<BudgetManagementDbContext>();
-    // Automatically update database
-    context.Database.Migrate();
+        builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddCookie();
+
+        var app = builder.Build();
+
+        using (var scope = app.Services.CreateScope())
+        {
+            var context = scope.ServiceProvider.GetRequiredService<BudgetManagementDbContext>();
+            // Automatically update database
+            context.Database.Migrate();
+        }
+
+        // Configure the HTTP request pipeline.
+        if (!app.Environment.IsDevelopment())
+        {
+            app.UseExceptionHandler("/Home/Error");
+            // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+            app.UseHsts();
+        }
+
+        app.UseHttpsRedirection();
+        app.UseStaticFiles();
+
+        app.UseRouting();
+
+        app.UseAuthorization();
+        app.UseAuthentication();
+
+        app.MapControllerRoute(
+            name: "default",
+            pattern: "{controller=Home}/{action=Index}/{id?}");
+
+        app.Run();
+
+    }
+
 }
 
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
-}
-
-app.UseHttpsRedirection();
-app.UseStaticFiles();
-
-app.UseRouting();
-
-app.UseAuthorization();
-app.UseAuthentication();
-
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-
-app.Run();

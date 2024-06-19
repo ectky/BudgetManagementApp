@@ -83,8 +83,7 @@ namespace BudgetManagement.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     BudgetCategoryId = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    ReportId = table.Column<int>(type: "int", nullable: true)
+                    UserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -95,11 +94,6 @@ namespace BudgetManagement.Data.Migrations
                         principalTable: "BudgetCategories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Budgets_Reports_ReportId",
-                        column: x => x.ReportId,
-                        principalTable: "Reports",
-                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Budgets_Users_UserId",
                         column: x => x.UserId,
@@ -126,6 +120,32 @@ namespace BudgetManagement.Data.Migrations
                         name: "FK_BudgetAmounts_Budgets_BudgetId",
                         column: x => x.BudgetId,
                         principalTable: "Budgets",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "BudgetReports",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BudgetId = table.Column<int>(type: "int", nullable: false),
+                    ReportId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BudgetReports", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_BudgetReports_Budgets_BudgetId",
+                        column: x => x.BudgetId,
+                        principalTable: "Budgets",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_BudgetReports_Reports_ReportId",
+                        column: x => x.ReportId,
+                        principalTable: "Reports",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -169,7 +189,7 @@ namespace BudgetManagement.Data.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "FirstName", "LastName", "Password", "RoleId", "Username" },
-                values: new object[] { 1, "Admin", "User", "YLkY8Byefvdzaevlbx3K2YKi14jA5f8qYPEDt/PjKjyzblp4odDZJS19mpzj+sVb", 2, "admin" });
+                values: new object[] { 1, "Admin", "User", "IIBYkT0aVhag+K9AJ+kRT3tQsxa3MEC59bRyjAI9RGJbfjOXDRh2Gg6T5UdsmGsG", 2, "admin" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_BudgetAmounts_BudgetId",
@@ -177,14 +197,19 @@ namespace BudgetManagement.Data.Migrations
                 column: "BudgetId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_BudgetReports_BudgetId",
+                table: "BudgetReports",
+                column: "BudgetId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BudgetReports_ReportId",
+                table: "BudgetReports",
+                column: "ReportId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Budgets_BudgetCategoryId",
                 table: "Budgets",
                 column: "BudgetCategoryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Budgets_ReportId",
-                table: "Budgets",
-                column: "ReportId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Budgets_UserId",
@@ -214,16 +239,19 @@ namespace BudgetManagement.Data.Migrations
                 name: "BudgetAmounts");
 
             migrationBuilder.DropTable(
+                name: "BudgetReports");
+
+            migrationBuilder.DropTable(
                 name: "FinanceGoals");
+
+            migrationBuilder.DropTable(
+                name: "Reports");
 
             migrationBuilder.DropTable(
                 name: "Budgets");
 
             migrationBuilder.DropTable(
                 name: "BudgetCategories");
-
-            migrationBuilder.DropTable(
-                name: "Reports");
 
             migrationBuilder.DropTable(
                 name: "Users");
