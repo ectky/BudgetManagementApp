@@ -15,8 +15,18 @@ namespace BudgetManagement.Data.Repos
     // TO DO:
     public class BudgetRepository : BaseRepository<Budget, BudgetDto>, IBudgetRepository
     {
+        private readonly IBudgetReportRepository _reportsRepository;
         public BudgetRepository(BudgetManagementDbContext context, IMapper mapper) : base(context, mapper)
         {
+        }
+
+        public async Task AddBudgetToReport(int budgetId, int reportId)
+        {
+            var br = new BudgetReportDto();
+            br.BudgetId = budgetId;
+            br.ReportId = reportId;
+            await _reportsRepository.SaveAsync(br);
+
         }
     }
 }

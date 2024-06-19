@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace BudgetManagement.Shared.Repos.Contracts
 {
-    public interface IBudgetRepository : IBaseRepository<BudgetDto>
+    public interface IBudgetReportRepository : IBaseRepository<BudgetReportDto>
     {
-        Task AddBudgetToReport(int budgetId, int reportId);
     }
 }

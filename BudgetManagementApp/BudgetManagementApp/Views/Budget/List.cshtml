@@ -34,6 +34,9 @@
             </td>
             <!--<td class="d-flex flex-wrap justify-content-lg-evenly justify-content-sm-wrap justify-content-md-evenly">-->
             <td>
+                @Html.ActionLink("Add report", "AddBudgetToReport", null, new { id = item.Id },
+                         htmlAttributes: new { @class = "btn btn-outline-secondary btn-sm me-3" })
+
                 @Html.ActionLink("Details", "Details", null, new { id = item.Id },
                          htmlAttributes: new { @class = "btn btn-outline-success btn-sm me-3" })
 
