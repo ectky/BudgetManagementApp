@@ -12,5 +12,6 @@ namespace BudgetManagement.Shared.Services.Contracts
     public interface IBudgetService : IBaseCrudService<BudgetDto, IBudgetRepository>
     {
         Task AddBudgetToReport(int budgetId, int reportId);
+        Task Transfer(int budgetAmountId, int budgetId);
     }
 }

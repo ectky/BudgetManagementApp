@@ -94,5 +94,12 @@ namespace BudgetManagementApp.Controllers
                 .Select(x => new SelectListItem($"{x.Name}", x.Id.ToString()));
             return View(transferVM);
         }
+
+        [HttpPost]
+        public virtual async Task<IActionResult> Transfer(TransferVM editVM)
+        {
+            await this._service.Transfer(editVM.BudgetAmountId, editVM.BudgetId);
+            return await List();
+        }
     }
 }

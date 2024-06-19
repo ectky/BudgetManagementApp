@@ -32,6 +32,54 @@
             @Html.DisplayFor(model => model.BudgetReports)
         </dd>
 
+        @foreach (var br in Model.BudgetReports) { 
+            <p class="h5">@br.Budget.Name</p>
+            <div class="col-md-6">
+                <table class="table table-hover">
+                    @foreach (var item in br.Budget.BudgetAmounts)
+                    {
+
+                        @if (item.Type == BudgetManagement.Shared.Enums.BudgetType.Income)
+                        {
+
+                            <tr class="table-success">
+                                <td class="text-dark">
+                                    @Html.DisplayNameFor(model => item.Amount)
+                                </td>
+                                <td class="text-dark">
+                                    @Html.DisplayFor(model => item.Amount)
+                                </td>
+                                <td class="col-1">
+                                    @Html.ActionLink("Transfer", "Transfer", new { id = item.Id },
+                                             htmlAttributes: new { @class = "btn btn-outline-dark btn-sm" })
+                                </td>
+
+                            </tr>
+                        }
+
+                        else
+                        {
+                            <tr class="table-danger ">
+                                <td class="text-dark">
+                                    @Html.DisplayNameFor(model => item.Amount)
+                                </td>
+                                <td class="text-dark">
+                                    @Html.DisplayFor(model => item.Amount)
+                                </td>
+                                <td class="col-1">
+                                    @Html.ActionLink("Transfer", "Transfer", new { id = item.Id },
+                                             htmlAttributes: new { @class = "btn btn-outline-dark btn-sm" })
+                                </td>
+                            </tr>
+                        }
+
+                    }
+                </table>
+            </div>
+
+        }
+
+
     </dl>
 </div>
 <div class="my-3">

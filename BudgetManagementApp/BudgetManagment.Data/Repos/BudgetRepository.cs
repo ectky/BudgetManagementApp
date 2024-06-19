@@ -12,13 +12,14 @@ using System.Threading.Tasks;
 namespace BudgetManagement.Data.Repos
 {
     [AutoBind]
-    // TO DO:
     public class BudgetRepository : BaseRepository<Budget, BudgetDto>, IBudgetRepository
     {
         private readonly IBudgetReportRepository _reportsRepository;
-        public BudgetRepository(BudgetManagementDbContext context, IMapper mapper, IBudgetReportRepository reportsRepository) : base(context, mapper)
+        private readonly IBudgetAmountRepository _budgetAmountRepository;
+        public BudgetRepository(BudgetManagementDbContext context, IMapper mapper, IBudgetReportRepository reportsRepository, IBudgetAmountRepository budgetAmountRepository) : base(context, mapper)
         {
             this._reportsRepository = reportsRepository;
+            this._budgetAmountRepository = budgetAmountRepository;
         }
 
         public async Task AddBudgetToReport(int budgetId, int reportId)
@@ -28,6 +29,14 @@ namespace BudgetManagement.Data.Repos
             br.ReportId = reportId;
             await _reportsRepository.SaveAsync(br);
 
+        }
+
+        public async Task Transfer(int budgetAmountId, int budgetId)
+        {
+            
+            var budgetAmount = await _budgetAmountRepository.GetByIdAsync(budgetAmountId);
+            budgetAmount.BudgetId = budgetId;
+            await _budgetAmountRepository.SaveAsync(budgetAmount);
         }
     }
 }

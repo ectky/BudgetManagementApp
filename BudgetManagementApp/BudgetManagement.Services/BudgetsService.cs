@@ -21,5 +21,10 @@ namespace BudgetManagement.Services
         {
             return _repository.AddBudgetToReport(budgetId, reportId);
         }
+
+        public Task Transfer(int budgetAmountId, int budgetId)
+        {
+            return _repository.Transfer(budgetAmountId, budgetId);
+        }
     }
 }

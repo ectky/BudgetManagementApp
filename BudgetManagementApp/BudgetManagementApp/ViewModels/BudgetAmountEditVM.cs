@@ -22,5 +22,8 @@ namespace BudgetManagementApp.ViewModels
 
         [Required]
         public BudgetType Type { get; set; }
+
+        [Required]
+        public IEnumerable<SelectListItem> TypeList { get; set; }
     }
 }

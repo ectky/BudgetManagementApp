@@ -13,7 +13,7 @@ namespace BudgetManagement.Data.Repos
 {
 
     [AutoBind]
-    public class BudgetReportRepository : BaseRepository<BudgetCategory, BudgetReportDto>, IBudgetReportRepository
+    public class BudgetReportRepository : BaseRepository<BudgetReport, BudgetReportDto>, IBudgetReportRepository
     {
         public BudgetReportRepository(BudgetManagementDbContext context, IMapper mapper) : base(context, mapper)
         {

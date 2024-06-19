@@ -10,5 +10,6 @@ namespace BudgetManagement.Shared.Repos.Contracts
     public interface IBudgetRepository : IBaseRepository<BudgetDto>
     {
         Task AddBudgetToReport(int budgetId, int reportId);
+        Task Transfer(int budgetAmountId, int budgetId);
     }
 }
