@@ -16,6 +16,7 @@ namespace BudgetManagement.Data.Entities
 
         public virtual List<BudgetAmount> BudgetAmounts { get; set; }
         public virtual List<FinanceGoal> FinanceGoals { get; set; }
+        public virtual List<BudgetReport>BudgetReports { get; set; }
 
         public int UserId { get; set; }
 

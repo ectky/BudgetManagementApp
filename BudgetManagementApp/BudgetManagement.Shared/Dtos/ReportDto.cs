@@ -8,15 +8,13 @@ namespace BudgetManagement.Shared.Dtos
 {
     public class ReportDto :BaseModel
     {
-        public ReportDto()
-        {
-            this.Budgets = new List<BudgetDto>();
-        }
+        
 
         public string Name { get; set; }
 
         public string Description { get; set; }
 
-        public  List<BudgetDto> Budgets { get; set; }
+        public virtual List<BudgetReportDto> BudgetReports { get; set; }
+
     }
 }

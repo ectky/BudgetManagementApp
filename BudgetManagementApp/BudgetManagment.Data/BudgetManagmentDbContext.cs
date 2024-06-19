@@ -16,6 +16,7 @@ namespace BudgetManagement.Data
         public DbSet<BudgetCategory> BudgetCategories { get; set; }
         public DbSet<BudgetAmount> BudgetAmounts { get; set; }
         public DbSet<Budget> Budgets { get; set; }
+        public DbSet<BudgetReport> BudgetReports { get; set; }
 
         public BudgetManagementDbContext(DbContextOptions<BudgetManagementDbContext> options) : base(options)
         {
@@ -53,17 +54,30 @@ namespace BudgetManagement.Data
                 .HasForeignKey(p => p.BudgetId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-              modelBuilder.Entity<Budget>()
-                .HasMany(u => u.FinanceGoals)
-                .WithOne(u => u.Budget)
-                .HasForeignKey(p => p.BudgetId)
+            modelBuilder.Entity<Budget>()
+              .HasMany(u => u.FinanceGoals)
+              .WithOne(u => u.Budget)
+              .HasForeignKey(p => p.BudgetId)
+              .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Budget>()
+              .HasOne(u => u.BudgetCategory)
+              .WithMany(u => u.Budgets)
+              .HasForeignKey(p => p.BudgetCategoryId)
+              .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<BudgetReport>()
+                .HasOne(br => br.Budget)
+                .WithMany(b => b.BudgetReports)
+                .HasForeignKey(b => b.BudgetId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-              modelBuilder.Entity<Budget>()
-                .HasOne(u => u.BudgetCategory)
-                .WithMany(u => u.Budgets)
-                .HasForeignKey(p => p.BudgetCategoryId)
+            modelBuilder.Entity<BudgetReport>()
+                .HasOne(br => br.Report)
+                .WithMany(b => b.BudgetReports)
+                .HasForeignKey(b => b.ReportId)
                 .OnDelete(DeleteBehavior.Restrict);
+
 
 
 

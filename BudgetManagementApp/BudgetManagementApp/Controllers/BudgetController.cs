@@ -45,14 +45,14 @@ namespace BudgetManagementApp.Controllers
         }
 
         [HttpGet]
-        public virtual async Task<IActionResult> AddBudgetToReport(int? budgetId)
+        public virtual async Task<IActionResult> AddBudgetToReport(int? Id)
         {
-            if (budgetId == null)
+            if (Id == null)
             {
                 return BadRequest(Constants.InvalidId);
             }
 
-            var model = await this._service.GetByIdIfExistsAsync(budgetId.Value);
+            var model = await this._service.GetByIdIfExistsAsync(Id.Value);
 
             if (model == default)
             {
@@ -60,7 +60,7 @@ namespace BudgetManagementApp.Controllers
             }
 
             var addBudgetToReport = new AddBudgetToReportVM();
-            addBudgetToReport.BudgetId = budgetId.Value;
+            addBudgetToReport.BudgetId = Id.Value;
             addBudgetToReport.ReportList = (await _reportService.GetAllAsync())
                 .Select(x => new SelectListItem($"{x.Name}", x.Id.ToString()));
             return View(addBudgetToReport);
