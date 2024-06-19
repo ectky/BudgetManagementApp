@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace BudgetManagement.Services
 {
     [AutoBind]
-    public class FinanceGoalsService : BaseCrudService<FinanceGoalDto, IFinanceGoalRepository>,IFinanceGoalService
+    public class FinanceGoalsService : BaseCrudService<FinanceGoalDto, IFinanceGoalRepository>, IFinanceGoalService
     {
         public FinanceGoalsService(IFinanceGoalRepository repository) : base(repository)
         {
@@ -21,7 +21,7 @@ namespace BudgetManagement.Services
         public override async Task<FinanceGoalDto> GetByIdIfExistsAsync(int id)
         {
             var financeGoal = await base.GetByIdIfExistsAsync(id);
-            var total =  CalculateCompletionPercentage(financeGoal);
+            var total = CalculateCompletionPercentage(financeGoal);
             financeGoal.CompletionPercentage = $"{total}%";
 
             return financeGoal;
@@ -32,9 +32,8 @@ namespace BudgetManagement.Services
             var incomes = financeGoal.Budget.BudgetAmounts.Where(x => x.Type == BudgetType.Income).Sum(x => x.Amount);
             var expenses = financeGoal.Budget.BudgetAmounts.Where(x => x.Type == BudgetType.Expense).Sum(x => x.Amount);
             var amount = financeGoal.Amount;
-            var total = ((amount-(amount - (incomes - expenses))) / amount) * 100;
+            var total = Math.Round(((amount - (amount - (incomes - expenses))) / amount) * 100);
             return total;
-
         }
     }
 }

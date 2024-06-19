@@ -72,5 +72,27 @@ namespace BudgetManagementApp.Controllers
             await this._service.AddBudgetToReport(editVM.BudgetId, editVM.ReportId);
             return await List();
         }
+
+        [HttpGet]
+        public virtual async Task<IActionResult> Transfer(int? Id)
+        {
+            if (Id == null)
+            {
+                return BadRequest(Constants.InvalidId);
+            }
+
+            var model = await this._budgetAmountService.GetByIdIfExistsAsync(Id.Value);
+
+            if (model == default)
+            {
+                return BadRequest(Constants.InvalidId);
+            }
+
+            var transferVM = new TransferVM();
+            transferVM.BudgetAmountId = Id.Value;
+            transferVM.Budgets = (await _service.GetAllAsync())
+                .Select(x => new SelectListItem($"{x.Name}", x.Id.ToString()));
+            return View(transferVM);
+        }
     }
 }
