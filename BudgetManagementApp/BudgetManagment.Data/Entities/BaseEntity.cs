@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BudgetManagement.Data.Entities
 {
-    public class BaseEntity: IBaseEntity
+    public class BaseEntity : IBaseEntity
     {
         public int Id { get; set; }
     }

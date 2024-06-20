@@ -4,6 +4,7 @@ using BudgetManagement.Shared.Dtos;
 using BudgetManagement.Shared.Repos.Contracts;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using PetShelter.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ using System.Threading.Tasks;
 namespace BudgetManagement.Data.Repos
 {
     public abstract class BaseRepository<T, TModel> : IBaseRepository<TModel>, IDisposable
-            where T : BaseEntity
+            where T : class, IBaseEntity
             where TModel : BaseModel
     {
         protected readonly DbContext _context;
