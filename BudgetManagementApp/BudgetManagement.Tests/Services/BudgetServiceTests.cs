@@ -1,4 +1,5 @@
 ﻿using BudgetManagement.Data.Entities;
+using BudgetManagement.Data.Repos;
 using BudgetManagement.Services;
 using BudgetManagement.Shared.Dtos;
 using BudgetManagement.Shared.Repos.Contracts;
@@ -33,7 +34,7 @@ namespace BudgetManagement.Test.Service
             //Assert
             _budgetRepositoryMock.Verify(x => x.SaveAsync(budgetDto), Times.Once());
         }
-       
+
         [Test]
         public async Task WhenSaveAsync_WithNull_ThenThrowArgumentNullException()
         {
@@ -99,8 +100,8 @@ namespace BudgetManagement.Test.Service
             //Arrange
             var budgetDto = new BudgetDto
             {
-              UserId = 1,
-              BudgetCategoryId = 1,
+                UserId = 1,
+                BudgetCategoryId = 1,
 
             };
             _budgetRepositoryMock.Setup(s => s.SaveAsync(It.Is<BudgetDto>(x => x.Equals(budgetDto))))
@@ -111,6 +112,32 @@ namespace BudgetManagement.Test.Service
             _budgetRepositoryMock.Verify(x => x.SaveAsync(budgetDto), Times.Once());
         }
 
+        [Test]
+        public async Task AddBudgetToReport_Should_Call_Repository_With_Correct_Parameters()
+        {
+            // Arrange
+            int budgetId = 1;
+            int reportId = 2;
+            _budgetRepositoryMock.Setup(repo => repo.AddBudgetToReport(budgetId, reportId)).Returns(Task.CompletedTask);
+            // Act
+            await _service.AddBudgetToReport(budgetId, reportId);
+            // Assert
+            _budgetRepositoryMock.Verify(repo => repo.AddBudgetToReport(budgetId, reportId), Times.Once);
+        }
+        [Test]
+        public async Task Transfer_Should_Call_Repository_With_Correct_Parameters()
+        {
+            // Arrange
+            int budgetAmountId = 3;
+            int budgetId = 4;
+            _budgetRepositoryMock.Setup(repo => repo.Transfer(budgetAmountId, budgetId)).Returns(Task.CompletedTask);
+            // Act
+            await _service.Transfer(budgetAmountId, budgetId);
+            // Assert
+            _budgetRepositoryMock.Verify(repo => repo.Transfer(budgetAmountId, budgetId), Times.Once);
+
+
+        }
     }
 }
 

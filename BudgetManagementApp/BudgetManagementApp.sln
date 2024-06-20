@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BudgetManagement.Services",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BudgetManagement.Shared", "BudgetManagement.Shared\BudgetManagement.Shared.csproj", "{F3222758-ABED-4422-B6C3-345875E1A742}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetManagement.Tests", "BudgetManagement.Tests\BudgetManagement.Tests.csproj", "{72927ECC-69B6-4E42-A648-9E3D29C0EB94}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetManagement.Tests", "BudgetManagement.Tests\BudgetManagement.Tests.csproj", "{9DACF459-5865-40FF-9A7A-4F0D117E5F76}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{F3222758-ABED-4422-B6C3-345875E1A742}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3222758-ABED-4422-B6C3-345875E1A742}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3222758-ABED-4422-B6C3-345875E1A742}.Release|Any CPU.Build.0 = Release|Any CPU
-		{72927ECC-69B6-4E42-A648-9E3D29C0EB94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{72927ECC-69B6-4E42-A648-9E3D29C0EB94}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{72927ECC-69B6-4E42-A648-9E3D29C0EB94}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{72927ECC-69B6-4E42-A648-9E3D29C0EB94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DACF459-5865-40FF-9A7A-4F0D117E5F76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DACF459-5865-40FF-9A7A-4F0D117E5F76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DACF459-5865-40FF-9A7A-4F0D117E5F76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DACF459-5865-40FF-9A7A-4F0D117E5F76}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
